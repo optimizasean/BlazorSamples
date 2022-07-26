@@ -1,0 +1,35 @@
+{
+  "name": "BlazorSamples",
+  "version": "1.0.0",
+  "description": "Testing blazor things",
+  "main": "n/a",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:css && npm run build:modules",
+    "build:css": "tailwind build -i styles.css -o wwwroot/css/tailwind.css",
+    "build:modules": "npm run build:modules:videojs && npm run build:modules:custom",
+    "build:modules:videojs": "browserify -r video.js -o wwwroot/js/video.js --standalone videojs",
+    "build:modules:custom": "browserify -d js/CustomExtensions.js -o wwwroot/js/CustomExtensionMethods.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimizasean/BlazorSamples.git"
+  },
+  "keywords": [
+    "blazor"
+  ],
+  "author": "optimizasean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/optimizasean/BlazorSamples/issues"
+  },
+  "homepage": "https://github.com/optimizasean/BlazorSamples#readme",
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "browserify": "^17.0.0",
+    "tailwindcss": "^3.1.4",
+    "video.js": "^7.20.1"
+  }
+}
