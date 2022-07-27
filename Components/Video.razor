@@ -1,7 +1,7 @@
 @inject IJSRuntime js
 
 @if (Url == null) {
-    <img src="/images/static.gif" />
+    <img src="images/static.gif" />
 } else {
     <video
       id="@Id"
@@ -11,7 +11,7 @@
           "preload": true,
           "autoplay": "muted",
           "loop": false,
-          "poster": "/images/color_bars.svg"
+          "poster": "images/color_bars.svg"
         }'>
         <source src="@Url" type="application/x-mpegURL">
         <p class="vjs-no-js">

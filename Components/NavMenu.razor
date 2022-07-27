@@ -1,41 +1,33 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">blazorsamples</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+﻿<div class="flex items-center justify-between bg-gray-900">
+    <a class="h-14 p-3 text-xl text-white sm:w-64 sm:h-14" href="">blazorsamples</a>
+    <button class="m-2 px-2 py-1 bg-gray-200/30 border-gray-700 border-solid border rounded sm:hidden hover:border-gray-500 hover:border-2" title="Navigation menu" @onclick="ToggleNavMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="videojs">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> VideoJS
-            </NavLink>
-        </div>
+<div class="@NavMenuCssClass text-lg text-white sm:block" @onclick="ToggleNavMenu">
+    <nav class="flex flex-col gap-3 p-3">
+        <NavLink class="p-2 rounded-md hover:bg-gray-300/20 " href="" Match="NavLinkMatch.All">
+            Home
+        </NavLink>
+        <NavLink class="p-2 rounded-md hover:bg-gray-300/20" href="counter">
+            Counter
+        </NavLink>
+        <NavLink class="p-2 rounded-md hover:bg-gray-300/20" href="fetchdata">
+            Fetch data
+        </NavLink>
+        <NavLink class="p-2 rounded-md hover:bg-gray-300/20" href="videojs">
+            VideoJS
+        </NavLink>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "hidden" : null;
 
     private void ToggleNavMenu()
     {
