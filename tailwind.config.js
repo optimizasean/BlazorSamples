@@ -7,25 +7,28 @@ module.exports = {
     ],
     safelist: [
         {
-            pattern: /.*/,
-            variants: [
-                "first",
-                "last",
-                "odd",
-                "even",
-                "visited",
-                "checked",
-                "empty",
-                "read-only",
-                "group-hover",
-                "group-focus",
-                "focus-within",
-                "hover",
-                "focus",
-                "focus-visible",
-                "active",
-                "disabled",
-            ],
+          // Backgrounds
+          pattern: /^bg-[^/]+$/,
+          variants: ["dark", "hover", "focus", "focus-visible", "group-hover"],
+        },
+        {
+          // Borders
+          pattern: /^border-[^/]+$/,
+          variants: ["dark", "hover", "focus", "focus-visible", "group-hover"],
+        },
+        {
+          // Ring Color
+          pattern: /^ring-[^/]+$/,
+        },
+        {
+          // Text Color
+          pattern: /^text-[^/]+$/,
+          variants: ["dark", "hover", "focus", "focus-visible", "group-hover"],
+        },
+        {
+          // Gradients
+          pattern: /^(from|to|via)-[^/]+$/,
+          variants: ["dark", "hover", "focus", "focus-visible"],
         },
     ],
     theme: {
@@ -44,6 +47,7 @@ module.exports = {
       },
     },
     plugins: [
+        require('@tailwindcss/typography'),
         require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio')
