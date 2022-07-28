@@ -22,7 +22,7 @@
         </p>
     </video>
 
-    <button type="button" @onclick="@(async () => await Dakine())">
+    <button type="button" @onclick="@(async () => await DakineGucci())">
         clikit
     </button>
 }
@@ -46,14 +46,20 @@
     protected async override Task OnAfterRenderAsync(bool firstRender) {
         if (firstRender) {
             Console.WriteLine("invoked");
-            //var dakine = js.InvokeAsync<object>("videojs", "videojs-player", "{liveui: true, preload: true, autoplay: true, poster: \"/images/color_bars.svg\"}");
+            //DakineRaw();
             await Task.CompletedTask;
         }
     }
 
-    //public async Task Dakine() => await js.InvokeAsync<object>("videojs", "videojs-player", "{liveui: true, preload: true, autoplay: true, poster: \"/images/color_bars.svg\"}");
-    public async Task Dakine() {
-        var jsthing = await js.InvokeAsync<object>("videojs", "videojs-player", "{liveui: true, preload: true, autoplay: true, poster: \"/images/color_bars.svg\"}");
+    public async Task DakineRaw() => await js.InvokeVoidAsync("eval", $"videojs('{Id}')");
+
+    public async Task DakineGucci() {
+        //Initialize with autoplay, wait, then pause to show can modify using reference
+        IJSObjectReference jsthing = await js.InvokeAsync<IJSObjectReference>("eval", $"videojs('{Id}', {{ liveui: true, preload: true, autoplay: true, poster: '/images/color_bars.svg'}})");
         Console.WriteLine(jsthing);
+        Console.WriteLine("Waiting 15 secs...");
+        await Task.Delay(15000);
+        Console.WriteLine("Pausing...");
+        await jsthing.InvokeVoidAsync("pause");
     }
 }
